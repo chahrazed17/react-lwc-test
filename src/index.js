@@ -1,8 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 
-// Expose une fonction globale pour Salesforce
-window.renderReactApp = (container) => {
-    ReactDOM.render(<App />, container);
+window.initReactApp = () => {
+  const container = document.getElementById("react-root");
+  if (!container) {
+    console.error("React root container not found.");
+    return;
+  }
+
+  const root = ReactDOM.createRoot(container);
+  root.render(<App />);
 };
